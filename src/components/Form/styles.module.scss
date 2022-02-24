@@ -1,0 +1,42 @@
+.container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.container h1{
+    text-align: center;
+}
+
+.content{
+    
+    max-width: 450px;
+
+    .doubleInput{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+
+        div{
+            width: 45%;
+        }
+
+        a{
+            width: 45%;
+            display: flex;
+            margin-top: 20px;
+            font-weight: bold;
+            color: var(--primary);
+            transition: filter .2s;
+            text-decoration: none;
+
+            &:hover{
+                cursor: pointer;
+                filter: opacity(0.7);
+            }
+        }
+    }
+}

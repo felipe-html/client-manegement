@@ -1,0 +1,102 @@
+.container{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content: center;
+    margin-top: 1.5rem;
+    width: 100%;
+    padding: 1rem;
+ 
+    h1{
+        text-align: center;
+    }
+}
+
+.content{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    max-width: 900px;
+    width: 100%;
+    flex: 1;
+    margin-top: 1.5rem;
+}
+
+.list{
+    display: flex;
+    padding: .5rem;
+    width: 100%;
+
+    &:first-child:hover{
+        cursor: default;
+        background-color: transparent;
+    }
+
+    &:hover{
+        background-color: white;
+        cursor: pointer;
+    }
+
+    
+
+    .id, .name, .nickname, .phone, .city{
+        display: inline-block;
+        overflow: hidden;   
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-align: left;
+        direction: ltr;
+    }
+
+    .id{
+        width: 50px;
+    }
+
+    .name{
+        width: 230px;
+    }
+
+    .nickname{
+        width: 200px;   
+    }
+
+    .phone{
+        width: 200px;
+    }
+
+    .city{
+        width: 100px;
+    }
+}
+
+@media(max-width:800px){
+    .list{
+        .nickname{
+            display: none;
+        }
+    }
+}
+
+@media(max-width: 620px){
+    .list{
+        .city{
+            display:none;
+        }
+    }
+}
+
+@media(max-width:510px){
+    .list{
+        .phone{
+            display: none;
+        }
+    }
+}
+
+@media(max-width:360px){
+    .list{
+        .id{
+            display: none;
+        }
+    }
+}

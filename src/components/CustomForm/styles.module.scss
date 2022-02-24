@@ -1,0 +1,19 @@
+.formContent{
+    margin: .2rem 0;
+    // width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    label{
+        font-size: .8rem;
+    }
+
+    input{
+
+        display: flex;
+        width: 100%;
+        padding: .5rem;
+        border-radius: 8px;
+        border: 1px solid var(--gray);
+    }
+}

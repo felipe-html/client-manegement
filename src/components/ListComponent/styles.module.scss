@@ -1,0 +1,36 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem;
+
+    &:hover{
+        background-color: white;
+        cursor: pointer;
+    }
+
+    span{
+        width: 70px;
+        max-width: 70px;
+        text-align: left;
+    }
+
+    .name{
+        width: 400px;
+        max-width:400px;
+        text-align: left;
+    }
+
+    .phone{
+        width: 200px;
+        max-width:200px;
+        text-align: left;
+    }
+
+    .location{
+        width: 200px;
+        max-width:200px;
+        text-align: left;
+    }
+
+    
+}

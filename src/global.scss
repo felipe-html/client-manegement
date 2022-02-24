@@ -1,0 +1,20 @@
+:root{
+    --primary: #3752BF;
+    --shape: #dcdcdc;
+    --gray: #adadad;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: poppins;
+    background-color: var(--shape);
+}
+
+input:focus{
+    outline: 0;
+}

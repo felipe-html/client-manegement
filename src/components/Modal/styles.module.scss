@@ -1,0 +1,56 @@
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay{
+    cursor: default;
+}
+
+.modal{
+    position: absolute;
+    background-color: rgb(255, 255, 255, 1);
+    padding: 24px;
+    border-radius: 10px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction: column;
+}
+
+.closeModal{
+    display: none;
+}
+
+.closeButton{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    border-radius: 5px;
+    color: white;
+    transition: filter .2s;
+}
+
+.closeButton:hover{
+    cursor: pointer;
+    filter: opacity(0.7);
+}
+
+.children{
+    margin-top: 1rem;
+}

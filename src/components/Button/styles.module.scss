@@ -1,0 +1,39 @@
+.container{
+    width: 100%;
+    max-width: 300px;
+    height: 50px;
+    background-color: var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border:none;
+    transition: filter .2s;
+    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.5);
+    position: relative;
+
+    p{
+        color: white;
+        font-weight: bold;
+    }
+
+    &:hover{
+        cursor: pointer;
+        filter:opacity(0.7);
+    }
+}
+
+.loader {
+    border: 5px solid white; /* Light grey */
+    border-top: 5px solid var(--gray); /* Blue */
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
