@@ -1,5 +1,4 @@
 //Masks
-
 const nameMask = (value: any) => {
     return value
         .replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g, "")

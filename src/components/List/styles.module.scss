@@ -1,20 +1,20 @@
-.container{
+.container {
     display: flex;
-    flex-direction:column;
-    align-items:center;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     margin-top: 1.5rem;
     width: 100%;
     padding: 1rem;
- 
-    h1{
+
+    h1 {
         text-align: center;
     }
 }
 
-.content{
+.content {
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: center;
     max-width: 900px;
     width: 100%;
@@ -22,80 +22,82 @@
     margin-top: 1.5rem;
 }
 
-.list{
+.list {
     display: flex;
     padding: .5rem;
     width: 100%;
 
-    &:first-child:hover{
+    &:first-child:hover {
         cursor: default;
         background-color: transparent;
     }
 
-    &:hover{
+    &:hover {
         background-color: white;
         cursor: pointer;
     }
 
-    
-
-    .id, .name, .nickname, .phone, .city{
+    .id,
+    .name,
+    .nickname,
+    .phone,
+    .city {
         display: inline-block;
-        overflow: hidden;   
+        overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
         text-align: left;
         direction: ltr;
     }
 
-    .id{
+    .id {
         width: 50px;
     }
 
-    .name{
+    .name {
         width: 230px;
     }
 
-    .nickname{
-        width: 200px;   
-    }
-
-    .phone{
+    .nickname {
         width: 200px;
     }
 
-    .city{
+    .phone {
+        width: 200px;
+    }
+
+    .city {
         width: 100px;
     }
 }
 
-@media(max-width:800px){
-    .list{
-        .nickname{
+@media(max-width:800px) {
+    .list {
+        .nickname {
             display: none;
         }
     }
 }
 
-@media(max-width: 620px){
-    .list{
-        .city{
-            display:none;
-        }
-    }
-}
-
-@media(max-width:510px){
-    .list{
-        .phone{
+@media(max-width: 620px) {
+    .list {
+        .city {
             display: none;
         }
     }
 }
 
-@media(max-width:360px){
-    .list{
-        .id{
+@media(max-width:510px) {
+    .list {
+        .phone {
+            display: none;
+        }
+    }
+}
+
+@media(max-width:360px) {
+    .list {
+        .id {
             display: none;
         }
     }

@@ -1,7 +1,3 @@
-This is a CRUD system to manage clients.
+## Crud system
 
-To see this application, just run the following command:
-
-## yarn
-
-The clients data are saved in localStorage, backend or database are not implemented, it's just to demonstrate the creation and manipulation.
+Este projeto foi feito para treinar a manipulação de formulários, está representado na forma de um CRUD (create, read, update, delete) e possui validação dos dados.

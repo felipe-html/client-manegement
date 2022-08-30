@@ -1,6 +1,4 @@
-import { Value } from 'sass'
 import styles from './styles.module.scss'
-
 interface FormProps extends React.InputHTMLAttributes<HTMLInputElement> {
     placeholder: string
     value: string

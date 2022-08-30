@@ -6,11 +6,8 @@ import { InputError } from "../../components/InputError";
 import { useClient } from "../../hooks/useClient";
 import util from '../../util'
 import { v4 as uuid } from 'uuid'
-
-
-import styles from './styles.module.scss'
 import { useModal } from "../../hooks/useModal";
-
+import styles from './styles.module.scss'
 export interface ClientProps {
     id: string;
     firstName: string,
@@ -24,7 +21,6 @@ export interface ClientProps {
     neighborhood?: string,
     block?: string,
 }
-
 export interface AddressProps {
     cep: string,
     logradouro: string,
@@ -34,8 +30,6 @@ export interface AddressProps {
 }
 
 export function Form() {
-
-    //states
     const [client, setClient] = useState<ClientProps>({} as ClientProps)
     const [error, setError] = useState<boolean>(false)
     const [errorMessage, setErrorMessage] = useState<string>('')
@@ -44,9 +38,7 @@ export function Form() {
     const { handleRegisterClient } = useClient()
     const { setNotificationModal, setNotificationMessage } = useModal()
 
-    //functions
     async function handleRegisterNewClient() {
-
         if (
             client.firstName === undefined ||
             client.lastName === undefined ||
@@ -81,20 +73,29 @@ export function Form() {
             setError(true)
             return
         }
-        setIsLoading(true)
 
-        const response = await axios.get(`https://viacep.com.br/ws/${client.zipCode}/json/`)
+        let address = {} as AddressProps
+
+        let response = await axios.get(`https://viacep.com.br/ws/${client.zipCode}/json/`)
             .then((response) => {
+                if (response.data.erro) {
+                    return 'error'
+                }
 
-                const data = response.data as AddressProps
-
-                return data
-
+                address = response.data as AddressProps
+                return 'success'
             })
             .catch((error: AxiosError) => {
-                return
+                return 'error'
             })
 
+        if (response === 'error') {
+            setErrorMessage('Please, insert a valid zip code.')
+            setError(true)
+            return
+        }
+
+        setIsLoading(true)
         setError(false)
         setErrorMessage('')
 
@@ -102,10 +103,10 @@ export function Form() {
             const newClient = {
                 ...client,
                 id: uuid(),
-                block: response.logradouro,
-                city: response.localidade,
-                neighborhood: response.bairro,
-                state: response.uf
+                block: address.logradouro,
+                city: address.localidade,
+                neighborhood: address.bairro,
+                state: address.uf
             } as ClientProps
 
             handleRegisterClient(newClient)
@@ -127,7 +128,6 @@ export function Form() {
         }
 
         setIsLoading(false)
-
     }
 
     return (
@@ -200,8 +200,6 @@ export function Form() {
                 title='Register'
                 loading={isLoading}
             />
-
-
         </section>
     )
 }

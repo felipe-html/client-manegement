@@ -1,9 +1,7 @@
 import { createContext, Dispatch, SetStateAction, useContext, useEffect, useState } from 'react'
-
 interface ModalProviderProps {
     children: any;
 }
-
 interface ModalContextData {
     notificationModal: boolean
     setNotificationModal: Dispatch<SetStateAction<boolean>>
@@ -15,7 +13,6 @@ interface ModalContextData {
     setConfirmationModal: Dispatch<SetStateAction<boolean>>
 }
 
-
 export const ModalContext = createContext(({} as ModalContextData));
 
 function ModalProvider({ children }: ModalProviderProps) {
@@ -25,7 +22,6 @@ function ModalProvider({ children }: ModalProviderProps) {
     const [editClientModal, setEditClientModal] = useState<boolean>(false)
 
     const [confirmationModal, setConfirmationModal] = useState<boolean>(false)
-    const [confirmationResponse, setConfirmationResponse] = useState<boolean>(false)
 
     return (
         <div>

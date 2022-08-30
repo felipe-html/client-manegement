@@ -1,4 +1,4 @@
-.container{
+.container {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -6,25 +6,24 @@
     padding: 1rem;
 }
 
-.container h1{
+.container h1 {
     text-align: center;
 }
 
-.content{
-    
+.content {
     max-width: 450px;
 
-    .doubleInput{
+    .doubleInput {
         display: flex;
         width: 100%;
         justify-content: space-between;
         align-items: center;
 
-        div{
+        div {
             width: 45%;
         }
 
-        a{
+        a {
             width: 45%;
             display: flex;
             margin-top: 20px;
@@ -33,7 +32,7 @@
             transition: filter .2s;
             text-decoration: none;
 
-            &:hover{
+            &:hover {
                 cursor: pointer;
                 filter: opacity(0.7);
             }

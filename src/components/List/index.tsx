@@ -1,12 +1,9 @@
-import axios, { AxiosError } from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useClient } from "../../hooks/useClient";
 import { useModal } from "../../hooks/useModal";
 import { ClientProps } from "../Form";
-import { ListComponent } from "../ListComponent";
 
 import styles from './styles.module.scss'
-
 
 export function List() {
     const { clients, getClients, setCurrentClient } = useClient()
@@ -17,7 +14,8 @@ export function List() {
     }, [])
 
     function openModal(client: ClientProps) {
-        setCurrentClient({ ...client })
+        setCurrentClient(client)
+        // setModalType('update')
         setEditClientModal(true)
     }
 
@@ -42,11 +40,8 @@ export function List() {
                             <th className={styles.city}>City</th>
                         </tr>
                     }
-
                     {
                         clients.length !== 0 ?
-
-
                             clients.map((client, k) => {
                                 return (
                                     <tr key={k} className={styles.list} onClick={() => { openModal(client) }}>
@@ -56,18 +51,12 @@ export function List() {
                                         <td className={styles.phone}>+{client.countryCode} {client.phone}</td>
                                         <td className={styles.city}>{client.city}</td>
                                     </tr>
-                                    // <ListComponent key={k} counter={k + 1} data={client} onClick={() => {
-                                    //     openModal(client)
-                                    // }} />
                                 )
                             })
-
                             :
-
                             <p>We didn't find any clients.</p>
                     }
                 </table>
-
             </div>
         </section>
     )

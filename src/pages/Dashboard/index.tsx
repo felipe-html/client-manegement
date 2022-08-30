@@ -5,6 +5,7 @@ import styles from './styles.module.scss'
 
 export function Dashboard() {
     const [selectedButton, setSelectedButton] = useState<string>('create')
+
     return (
         <>
             <header className={styles.headerContainer}>
@@ -38,7 +39,6 @@ export function Dashboard() {
                         <List />
                     )
                 }
-
             </main>
         </>
     )

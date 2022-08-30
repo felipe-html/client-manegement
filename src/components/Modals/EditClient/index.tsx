@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useClient } from "../../../hooks/useClient"
 import { useModal } from "../../../hooks/useModal"
 import util from "../../../util"
@@ -11,15 +11,17 @@ import { Modal } from "../../Modal"
 import styles from './styles.module.scss'
 
 export function EditClient() {
-
     const { editClientModal, setEditClientModal, setNotificationMessage, setNotificationModal } = useModal()
     const { currentClient, setCurrentClient, handleDeleteClient, handleUpdateClient } = useClient()
     const [error, setError] = useState<boolean>(false)
     const [errorMessage, setErrorMessage] = useState<string>('')
     const [confirmationMessage, setConfirmationMessage] = useState<string>('')
 
-    async function handleUpdateUser() {
+    useEffect(() => {
+        setModalType('update')
+    }, [editClientModal])
 
+    async function handleUpdateUser() {
         if (
             currentClient.firstName === undefined ||
             currentClient.lastName === undefined ||
@@ -49,42 +51,43 @@ export function EditClient() {
             return
         }
 
-        const response = await axios.get(`https://viacep.com.br/ws/${currentClient.zipCode}/json/`)
+        let address = {} as AddressProps
+
+        let response = await axios.get(`https://viacep.com.br/ws/${currentClient.zipCode}/json/`)
             .then((response) => {
+                if (response.data.erro) {
+                    return 'error'
+                }
 
-                const data = response.data as AddressProps
-
-                return data
-
+                address = response.data as AddressProps
+                return 'success'
             })
             .catch((error: AxiosError) => {
-                return
+                return 'error'
             })
+
+        if (response === 'error') {
+            setErrorMessage('Please, insert a valid zip code.')
+            setError(true)
+            return
+        }
 
         setError(false)
         setErrorMessage('')
 
-        if (response) {
-            const newclient = {
-                ...currentClient,
-                block: response.logradouro,
-                city: response.localidade,
-                neighborhood: response.bairro,
-                state: response.uf
-            } as ClientProps
+        const newclient = {
+            ...currentClient,
+            block: address.logradouro,
+            city: address.localidade,
+            neighborhood: address.bairro,
+            state: address.uf
+        } as ClientProps
 
-            handleUpdateClient(newclient)
-            setEditClientModal(false)
-            setModalType('confirmation')
-            setNotificationMessage('Client updated successfully.')
-            setNotificationModal(true)
-
-        } else {
-
-            setErrorMessage('Please, insert a valid zip code.')
-            setError(true)
-        }
-
+        handleUpdateClient(newclient)
+        setEditClientModal(false)
+        setModalType('confirmation')
+        setNotificationMessage('Client updated successfully.')
+        setNotificationModal(true)
     }
 
     async function getAddress() {
@@ -108,7 +111,6 @@ export function EditClient() {
                 setError(true)
                 setErrorMessage('Zipcode invalid')
             })
-
     }
 
     function handleDeleteUser() {
@@ -124,6 +126,7 @@ export function EditClient() {
     }
 
     const [modalType, setModalType] = useState('update')
+
     return (
         <Modal
             open={editClientModal}
@@ -181,7 +184,6 @@ export function EditClient() {
                             </div>
 
                             <a
-                                // onClick={() => setModalIsOpen(false)}
                                 href='https://buscacepinter.correios.com.br/app/endereco/index.php'
                                 target='_blank'
                             >
@@ -256,7 +258,6 @@ export function EditClient() {
                         </div>
                     </div>
             }
-
         </Modal>
     )
 }

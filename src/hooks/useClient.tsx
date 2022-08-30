@@ -16,13 +16,11 @@ interface ClientContextData {
     setCurrentClient: Dispatch<SetStateAction<ClientProps>>
 }
 
-
 export const ClientContext = createContext(({} as ClientContextData));
 
 function ClientProvider({ children }: ClientProviderProps) {
     const [clients, setClients] = useState<ClientProps[]>([])
     const [currentClient, setCurrentClient] = useState<ClientProps>({} as ClientProps)
-
 
     useEffect(() => {
         getClients()
@@ -88,7 +86,6 @@ function ClientProvider({ children }: ClientProviderProps) {
             setClients(clientsData)
         }
     }
-
 
     return (
         <div>
