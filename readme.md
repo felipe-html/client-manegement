@@ -1,3 +1,19 @@
 ## Crud system
 
+Available on http://the-client-management.netlify.app
+
 Este projeto foi feito para treinar a manipulação de formulários, está representado na forma de um CRUD (create, read, update, delete) e possui validação dos dados.
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
